@@ -1,6 +1,7 @@
 package com.example.lab1
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -65,6 +66,13 @@ class MainActivity : AppCompatActivity() {
 
             var inflator = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             var photoView = inflator.inflate(R.layout.photo_entry, null)
+            photoView.imgPhoto.setOnClickListener{
+
+                val intent = Intent(context, PhotoHorizontal::class.java)
+                intent.putExtra("image", photo.image!!)
+                context!!.startActivity(intent)
+            }
+
             photoView.imgPhoto.setImageResource(photo.image!!)
 
             return photoView
